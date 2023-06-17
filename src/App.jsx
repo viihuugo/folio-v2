@@ -1,5 +1,5 @@
 import React from 'react'
-import { Routes , Route , useLocation } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, useLocation } from 'react-router-dom'
 
 import { Home, About, Work, CryptoStats, Contact, AutiSocial } from './pages'
 
@@ -18,15 +18,14 @@ function App() {
       <GlobalStyle/>
       <ScrollToTop/>
       
-        <Routes location={location} key={location.pathname}>
-          <Route path="/" element={<Home/>}/>
-          <Route path="/about" element={<About/>}/>
-          <Route path="/work" element={<Work/>}/>
-          <Route path="/work/cryptostats" element={<CryptoStats/>}/>
-          <Route path="/work/autisocial" element={<AutiSocial/>}/>
-          <Route path="/contact" element={<Contact/>}/>         
-        
-        </Routes>
+        <Router>
+          <Switch>
+            {/* Define your routes using the Route component */}
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={About} />
+            
+          </Switch>
+        </Router>
     </AnimatePresence>         
     </>
   )
